@@ -22,14 +22,14 @@ sequenceDiagram
     server-->>browser: 200 OK css file
     deactivate server
 
-    browser-->>server: GET /exampleapp/main.js
+    browser->>server: GET /exampleapp/main.js
     activate server
     server-->>browser: 200 OK JavaScript file
     deactivate server
 
     Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
 
-    browser-->>server: GET /exampleapp/data.json
+    browser->>server: GET /exampleapp/data.json
     activate sever
     server-->>browser: 200 OK\n[{content: "", date: "2024-06-28T11:37:17.214Z"}, ... ]
     deactivate server
