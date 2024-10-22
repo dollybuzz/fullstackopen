@@ -10,7 +10,7 @@ const Content = (input) => {
   return (
     <div>
        <p>
-        {input.part} {input.exercise}
+        {input.a} {input.b}
       </p>
     </div>
   )
@@ -33,7 +33,7 @@ const Part = (input) => {
 const Total = (input) => {
   return (
     <div>
-      <p>Number of exercises {input.exercise1 + input.exercise2 + input.exercise3}</p>
+      <p>Number of exercises {input.a + input.b + input.c}</p>
     </div>
   )
 }
@@ -73,10 +73,10 @@ const App = () => {
   return (
     <>
       <Header course={course} />
-      <Content part={parts[0].name} exercise={parts[0].exercises} />
-      <Content part={parts[1].name} exercise={parts[1].exercises} />
-      <Content part={parts[2].name} exercise={parts[2].exercises} />
-      <Total exercise1={exercises1} exercise2={exercises2} exercise3={exercises3} />
+      <Content a={parts[0].name} b={parts[0].exercises} />
+      <Content a={parts[1].name} b={parts[1].exercises} />
+      <Content a={parts[2].name} b={parts[2].exercises} />
+      <Total a={parts[0].exercises} b={parts[1].exercises} c={parts[2].exercises} />
     </>
   )
 }
