@@ -1,9 +1,16 @@
-import ReactDOM from 'react-dom/client'
+import ReactDom from 'react-dom/client';
 
-import App from './App'
+import App from './App';
 
-let counter = 1
+let counter = 1;
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <App counter={counter} />
-)
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const refresh = () => {
+  root.render(<App counter={counter}/>)
+};
+
+setInterval(() => {
+  refresh();
+  counter += 1;
+}, 1000)
