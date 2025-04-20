@@ -14,6 +14,9 @@ const Display = ({counter}) => {
   <div>{counter}</div>
   )
   }
+
+  compact arrow function
+  const Display = ({counter}) => <div>{counter}</div>
 */
 
 const Button = (props) => {
