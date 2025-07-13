@@ -30,6 +30,7 @@ const App = () => {
     setAll(allClicks);
     setLeft(left + 1);
     }
+    however, do not do this since state of React components should never be modified directly
   */
 
   return (
