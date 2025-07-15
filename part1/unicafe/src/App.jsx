@@ -32,9 +32,16 @@ const App = () => {
     setRight(right + 1);
   }
 
-  const handleClick = () => {
+  const handleClick = () => { //using event handlers
     console.log("Clicked the button");
     setValue(0);
+  }
+
+  const resetValue = () => { //calling a function that returns a function
+    const reset = () => {
+      setValue(10);
+    }
+    return reset;
   }
 
   return (
@@ -46,7 +53,8 @@ const App = () => {
      <History allClick={allClicks} />
      <br></br>
       {value}
-     <button onClick={handleClick}>reset</button>
+     <button onClick={handleClick}>zero</button>
+     <button onClick={resetValue()}>reset</button>
     </div>
   )
 }
