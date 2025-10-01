@@ -7,15 +7,14 @@ const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
 const App = () => {
   const [value, setValue] = useState(10);
 
-  const hello = () => {
-    const handler = () => console.log('hello world');
-    return handler;
-  }
+  const hello = (who) => () => { console.log('hello', who) };
 
   return (
     <div>
       {value}
-      <button onClick={hello()}>button</button>
+      <button onClick={hello('world')}>button</button>
+      <button onClick={hello('react')}>button</button>
+      <button onClick={hello('function')}>button</button>
     </div>
   )
 }
