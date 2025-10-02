@@ -34,6 +34,7 @@ const App = () => {
       <Display text={'good'} value={good}/>
       <Display text={'neutral'} value={neutral}/>
       <Display text={'bad'} value={bad}/>
+      <Display text={'all'} value={good + neutral + bad}/>
     </div>
   )
 }
