@@ -10,9 +10,11 @@ const Title = (props) => (
   <div><h1>{props.title}</h1></div>
 )
 
-const Display = (props) => (
+const Statistics = (props) => (
   <div>{props.text} {props.value}</div>
 )
+
+
 
 const App = () => {
   //save clicks of each button to its own state
@@ -34,12 +36,12 @@ const App = () => {
       <Button onClick={() => {setToNeutral(neutral + 1)}} text={'neutral'}/>
       <Button onClick={() => {setToBad(bad + 1)}} text={'bad'}/>
       <Title title={'statistics'} />
-      <Display text={'good'} value={good}/>
-      <Display text={'neutral'} value={neutral}/>
-      <Display text={'bad'} value={bad}/>
-      <Display text={'all'} value={all}/>
-      <Display text={'average'} value={average}/>
-      <Display text={'positive'} value={positive + ' %'} />
+      <Statistics text={'good'} value={good}/>
+      <Statistics text={'neutral'} value={neutral}/>
+      <Statistics text={'bad'} value={bad}/>
+      <Statistics text={'all'} value={all}/>
+      <Statistics text={'average'} value={average}/>
+      <Statistics text={'positive'} value={positive + ' %'} />
     </div>
   )
 }
