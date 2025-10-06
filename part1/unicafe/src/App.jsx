@@ -7,23 +7,45 @@ const Button = (props) => (
 )
 
 const Title = (props) => (
-  <div><h1>{props.title}</h1></div>
+  <h1>{props.title}</h1>
 )
 
-const Statistics = (props) => (
+const StatisticsLine = (props) => {
+  return (
   <div>{props.text} {props.value}</div>
-)
+  )
+}
 
+const Statistics = (props) => {
+  const all = props.good + props.neutral + props.bad;
+  const average = (props.good*1 + props.neutral*0 + props.bad*-1)/all;
+  const positive = (props.good/all)*100;
 
+  return (
+    <div>
+      <Title title={'statistics'} />
+      { all == 0 ? (
+      <p>No feedback given</p>
+      ) : (
+      <div>
+      <StatisticsLine text={'good'} value={props.good}/>
+      <StatisticsLine text={'neutral'} value={props.neutral}/>
+      <StatisticsLine text={'bad'} value={props.bad}/>
+      <StatisticsLine text={'all'} value={all}/>
+      <StatisticsLine text={'average'} value={average}/>
+      <StatisticsLine text={'positive'} value={positive + ' %'} />
+      </div>
+      )
+      }
+    </div>
+  )
+}
 
 const App = () => {
   //save clicks of each button to its own state
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
-  const all = good + neutral + bad;
-  const average = (good*1 + neutral*0 + bad*-1)/all;
-  const positive = (good/all)*100;
   
   const setToGood = (value) => { setGood(value) };
   const setToNeutral = (value) => { setNeutral(value) };
@@ -36,20 +58,7 @@ const App = () => {
       <Button onClick={() => {setToNeutral(neutral + 1)}} text={'neutral'}/>
       <Button onClick={() => {setToBad(bad + 1)}} text={'bad'}/>
       
-      <Title title={'statistics'} />
-      { good == 0 && neutral == 0 && bad == 0 ? (
-        <div>No Feedback given</div>
-      ) : (
-        <div>
-      <Statistics text={'good'} value={good}/>
-      <Statistics text={'neutral'} value={neutral}/>
-      <Statistics text={'bad'} value={bad}/>
-      <Statistics text={'all'} value={all}/>
-      <Statistics text={'average'} value={average}/>
-      <Statistics text={'positive'} value={positive + ' %'} />
-      </div>
-      )
-      }
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
