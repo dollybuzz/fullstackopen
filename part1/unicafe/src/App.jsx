@@ -61,21 +61,35 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ];
 
+  
+
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const [selected, setSelected] = useState(0);
+  const [vote, setVote] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+  const randomNum = Math.floor(Math.random()*anecdotes.length);
   
   const setToGood = (value) => { setGood(value) };
   const setToNeutral = (value) => { setNeutral(value) };
   const setToBad = (value) => { setBad(value) };
-  const setToSelected = (value) => setSelected(value);
+  const setToSelected = (value) => { setSelected(value) };
+ 
+  const setToVote = (value) => {
+    setVote(() => { 
+    const copy = [...vote];
+    copy[value] = copy[value] + 1
+    return copy;
+    })
+  };
 
   return (
     <div>
       <Title title={'anecdotes'} />
       <div>{anecdotes[selected]}</div><br/>
-      <Button onClick={() => {setToSelected(Math.trunc(Math.random()*8))}} text={"next anecdote"}/>
+      <div>has {vote[selected]} votes</div>
+      <Button onClick={() => {setToVote(selected)}} text={"vote"}/>
+      <Button onClick={() => {setToSelected(randomNum)}} text={"next anecdote"}/>
       
       <Title title={'give feedback'} />
       <Button onClick={() => {setToGood(good + 1)}} text={'good'}/>
