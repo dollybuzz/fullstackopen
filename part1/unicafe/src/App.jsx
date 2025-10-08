@@ -68,7 +68,7 @@ const App = () => {
   const [bad, setBad] = useState(0);
   const [selected, setSelected] = useState(0);
   const [vote, setVote] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
-  const randomNum = Math.floor(Math.random()*anecdotes.length);
+  const randomNum = Math.floor(Math.random()*anecdotes.length); //note - no functionality to change the seed so 'random' generation is the same every time
   
   const setToGood = (value) => { setGood(value) };
   const setToNeutral = (value) => { setNeutral(value) };
@@ -76,7 +76,7 @@ const App = () => {
   const setToSelected = (value) => { setSelected(value) };
  
   const setToVote = (value) => {
-    setVote(() => { 
+    setVote(() => {  // could pass the vote array here as a parameter but redundant
     const copy = [...vote];
     copy[value] = copy[value] + 1
     return copy;
