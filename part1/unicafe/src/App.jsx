@@ -83,13 +83,33 @@ const App = () => {
     })
   };
 
+  const highestVote = (arr) => {
+    if (arr.length === 0) {
+      return -1;
+    }
+    var max = arr[0];
+    var maxIndex = 0;
+
+    for(let i = 0; i < arr.length; i++) {
+      if(arr[i] > max) {
+        maxIndex = i;
+        max = arr[i];
+      }
+    }
+
+    return anecdotes[maxIndex];
+  };
+
   return (
     <div>
-      <Title title={'anecdotes'} />
+      <Title title={'Anecdote of the day'} />
       <div>{anecdotes[selected]}</div><br/>
       <div>has {vote[selected]} votes</div>
       <Button onClick={() => {setToVote(selected)}} text={"vote"}/>
       <Button onClick={() => {setToSelected(randomNum)}} text={"next anecdote"}/>
+      
+      <Title title={'Anecdote with most votes'} />
+      <div>{highestVote(vote)}</div>
       
       <Title title={'give feedback'} />
       <Button onClick={() => {setToGood(good + 1)}} text={'good'}/>
