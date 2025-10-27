@@ -87,13 +87,14 @@ const App = () => {
     if (arr.length === 0) {
       return -1;
     }
-    var max = arr[0];
-    var maxIndex = 0;
 
-    for(let i = 0; i < arr.length; i++) {
-      if(arr[i] > max) {
+    let maxVotes = 0;
+    let maxIndex = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (maxVotes < arr[i]) {
+        maxVotes = arr[i];
         maxIndex = i;
-        max = arr[i];
       }
     }
 
